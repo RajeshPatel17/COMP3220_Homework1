@@ -21,6 +21,8 @@ class Token
 	STAR = "*"
 	SLASH = "/"
 	PERC = "%"
+	INT = "int"
+	ID = "id"
 # add the rest of the tokens needed based on the grammar
 # specified in the Scanner class "TinyScanner.rb"
 
