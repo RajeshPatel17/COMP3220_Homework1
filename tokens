@@ -29,5 +29,9 @@ whitespace
 id print
 whitespace  
 id z
-whitespace 
+whitespace  
+! !
+whitespace  
+; ;
+whitespace  
 eof eof

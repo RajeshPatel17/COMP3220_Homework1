@@ -133,13 +133,15 @@ class Scanner
 		elsif @c == ";"
 			nextCh()
 			return Token.new(Token::SEMI,";")
-			
+
+		str = @c
 		nextCh()
-		return Token.new("unknown",@c)
+		return Token.new("unknown",str)
 
 		end
+		str = @c
 		nextCh()
-		tok = Token.new("unknown",@c)
+		return Token.new("unknown",str)
 		return tok
 	end
 	
