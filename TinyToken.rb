@@ -15,6 +15,12 @@ class Token
 	RPAREN = ")"
 	ADDOP  = "+"
 	WS = "whitespace"
+	PRINT = "print"
+	EQ = "="
+	DASH = "-"
+	STAR = "*"
+	SLASH = "/"
+	PERC = "%"
 # add the rest of the tokens needed based on the grammar
 # specified in the Scanner class "TinyScanner.rb"
 
