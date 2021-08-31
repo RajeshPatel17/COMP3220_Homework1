@@ -22,8 +22,6 @@ class Token
 	PERC = "percent"
 	INT = "int"
 	ID = "id"
-	SEMI = "semicolon"
-	EXCLM = "exclamation"
 # add the rest of the tokens needed based on the grammar
 # specified in the Scanner class "TinyScanner.rb"
 

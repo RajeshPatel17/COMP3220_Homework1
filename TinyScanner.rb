@@ -126,23 +126,9 @@ class Scanner
 			nextCh()
 			return Token.new(Token::PERC,"%")
 		
-		elsif @c == "!"
-			nextCh()
-			return Token.new(Token::EXCLM,"!")
-		
-		elsif @c == ";"
-			nextCh()
-			return Token.new(Token::SEMI,";")
-
-		str = @c
-		nextCh()
-		return Token.new("unknown",str)
-
 		end
-		str = @c
 		nextCh()
-		return Token.new("unknown",str)
-		return tok
+		return Token.new("unknown","unknown")
 	end
 	
 			# elsif ...

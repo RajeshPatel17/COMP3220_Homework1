@@ -30,8 +30,8 @@ id print
 whitespace  
 id z
 whitespace  
-! !
+unknown unknown
 whitespace  
-; ;
+unknown unknown
 whitespace  
 eof eof
