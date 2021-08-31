@@ -30,6 +30,10 @@ class Scanner
 		# doesn't abend if it can't open the file but rather
 		# displays an informative message
 		@f = File.open(filename,'r:utf-8')
+		if !File.exists?(@f)
+			print "file does not exist"
+			return null
+		end
 		
 		# Go ahead and read in the first character in the source
 		# code file (if there is one) so that you can begin
@@ -63,7 +67,7 @@ class Scanner
 				
 		elsif (whitespace?(@c))
 			str =""
-		
+			
 			while whitespace?(@c)
 				str += @c
 				nextCh()
@@ -71,7 +75,66 @@ class Scanner
 		
 			tok = Token.new(Token::WS,str)
 			return tok
-		# elsif ...
+
+		elsif numeric?(@c)
+			str = @c
+			nextCh()
+			while numeric?(@c)
+				str += @c
+				nextCh()
+			end
+			return Token.new(Token::INT,str)
+
+		elsif letter?(@c)
+			str = @c
+			nextCh()
+			while letter?(@c)
+				str += @c
+				nextCh()
+			end
+			return Token.new(Token::ID,str)
+
+		elsif @c == "("
+			nextCh()
+			return Token.new(Token::LPAREN,"(")
+		
+		elsif @c == ")"
+			nextCh()
+			return Token.new(Token::RPAREN,")")
+		
+		elsif @c == "+"
+			nextCh()
+			return Token.new(Token::ADDOP,"+")
+
+		elsif @c == "="
+			nextCh()
+			return Token.new(Token::EQ,"=")
+
+		elsif @c == "-"
+			nextCh()
+			return Token.new(Token::DASH,"-")
+		
+		elsif @c == "*"
+			nextCh()
+			return Token.new(Token::STAR, "*")
+
+		elsif @c == "/"
+			nextCh()
+			return Token.new(Token::SLASH,"/")
+
+		elsif @c == "%"
+			nextCh()
+			return Token.new(Token::PERC,"%")
+		nextCh()
+		return Token.new("unknown",@c)
+
+		end
+		nextCh()
+		tok = Token.new("unknown",@c)
+		return tok
+	end
+	
+			# elsif ...
 		# more code needed here! complete the code here 
 		# so that your lexer can correctly recognize,
 		# display and return all tokens
@@ -86,24 +149,21 @@ class Scanner
 		# remember to include some case to handle
 		# unknown or unrecognized tokens.
 		# below I make the token that you should pass back
-		tok = Token.new("unknown","unknown")
-		end
-	
+
+
+	#
+	# Helper methods for Scanner
+	#
+	def letter?(lookAhead)
+		lookAhead =~ /^[a-z]|[A-Z]$/
+	end
+
+	def numeric?(lookAhead)
+		lookAhead =~ /^(\d)+$/
+	end
+
+	def whitespace?(lookAhead)
+		lookAhead =~ /^(\s)+$/
+	end
+
 end
-#
-# Helper methods for Scanner
-#
-def letter?(lookAhead)
-	lookAhead =~ /^[a-z]|[A-Z]$/
-end
-
-def numeric?(lookAhead)
-	lookAhead =~ /^(\d)+$/
-end
-
-def whitespace?(lookAhead)
-	lookAhead =~ /^(\s)+$/
-end
-
-
-
