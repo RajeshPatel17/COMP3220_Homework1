@@ -125,6 +125,15 @@ class Scanner
 		elsif @c == "%"
 			nextCh()
 			return Token.new(Token::PERC,"%")
+		
+		elsif @c == "!"
+			nextCh()
+			return Token.new(Token::EXCLM,"!")
+		
+		elsif @c == ";"
+			nextCh()
+			return Token.new(Token::SEMI,";")
+			
 		nextCh()
 		return Token.new("unknown",@c)
 
