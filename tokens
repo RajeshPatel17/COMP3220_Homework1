@@ -1,0 +1,33 @@
+id x
+whitespace  
+equals =
+whitespace  
+int 3
+whitespace 
+id y
+whitespace  
+equals =
+whitespace  
+int 5
+whitespace 
+id z
+whitespace  
+equals =
+whitespace  
+( (
+id x
+whitespace  
++ +
+whitespace  
+id y
+) )
+whitespace  
+slash /
+whitespace  
+int 3
+whitespace 
+id print
+whitespace  
+id z
+whitespace 
+eof eof
